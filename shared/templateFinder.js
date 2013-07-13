@@ -2,6 +2,7 @@
 var templates = null;
 
 module.exports = function(Handlebars) {
+  
   return {
     getTemplate: function(templateName) {
       /**
@@ -13,7 +14,9 @@ module.exports = function(Handlebars) {
     getPartialTemplate = function(templateName) {
       /* Allow compiledTemplates to be created asynchronously.
       */
+      require(rendr.entryPath + '/app/templates/compiledTemplates')(Handlebars);
       templates = templates || Handlebars.partials;
+
     
       return templates[templateName];
     }
