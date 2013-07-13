@@ -9,6 +9,13 @@ module.exports = function(Handlebars) {
        */
       templates = templates || require(rendr.entryPath + '/app/templates/compiledTemplates')(Handlebars);
       return templates[templateName];
+    },
+    getPartialTemplate = function(templateName) {
+      /* Allow compiledTemplates to be created asynchronously.
+      */
+      templates = templates || Handlebars.partials;
+    
+      return templates[templateName];
     }
   }
 };
